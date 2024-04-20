@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="CLASS SCHEDULE" content="我定义了一个课程表" >
+    <style>
+        <!--定义一个左偏段落-->
+            /* 创建一个自定义的CSS类用于控制文本偏移 */
+        .offset-text {
+            /* 垂直偏移 */
+            position: relative; /* 使用相对定位 */
+            left: 10px; /* 垂直偏移 10 像素，可以根据需要调整 */
+
+            /* 水平偏移 */
+            /* left: 10px; 水平偏移 10 像素，可以根据需要调整 */
+        }
+        /* 通过 CSS 设置边框颜色 */
+        .custom-border {
+            border: 1px solid red; /* 设置边框为1像素宽的红色边框 */
+        }
+        .center-container01 {
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            height: 30vh; /* 设置容器的高度为视口高度，以使其在垂直方向上居中 */
+        }
+    </style>
+    <title>课程表</title>
+</head>
+<a name="top">顶部</a>
+<body>
+<p style="text-align: center" class="offset-text">课程表</p>
+<div class="center-container01">
+    <table border="3px"  style="text-align: center">
+
+       <tr>
+           <td colspan="1">项目<td colspan="5">上课<td colspan="2">休息</td>
+       </tr>
+        <tr bgcolor="#ffb6c1">
+            <td><strong>星期</strong><td><strong>星期一</strong><td><strong>星期二</strong><td><strong>星期三</strong><td><strong>星期四</strong>
+            <td><strong>星期五</strong><td><strong>星期六</strong><td><strong>星期日</strong></td>
+        </tr>
+        <tr>
+            <td rowspan="4">上午</td>
+            <td>语文</td>
+            <td>数学</td>
+            <td>英语</td>
+            <td>英语</td>
+            <td>物理</td>
+            <td>计算机</td>
+            <td rowspan="4">休息</td>
+        </tr>
+        <tr>
+            <td>数学</td>
+            <td>数学</td>
+            <td>地理</td>
+            <td>化学</td>
+            <td>历史</td>
+            <td>计算机</td>
+        </tr>
+        <tr>
+            <td>语文</td>
+            <td>数学</td>
+            <td>历史</td>
+            <td>计算机</td>
+            <td>物理</td>
+            <td>化学</td>
+        </tr>
+        <tr>
+            <td>数学</td>
+            <td>数学</td>
+            <td>地理</td>
+            <td>化学</td>
+            <td>历史</td>
+            <td>计算机</td>
+        </tr>
+        <tr>
+            <td rowspan="2">下午</td>
+            <td>数学</td>
+            <td>数学</td>
+            <td>地理</td>
+            <td>化学</td>
+            <td>历史</td>
+            <td>计算机</td>
+            <td rowspan="2">休息</td>
+        </tr>
+        <tr>
+            <td>数学</td>
+            <td>数学</td>
+            <td>地理</td>
+            <td>化学</td>
+            <td>历史</td>
+            <td>计算机</td>
+        </tr>
+    </table>
+</div>
+<div class="center-container">
+    <img src="../img/1.png" alt="新生入校" title="动员大会" width="700">
+    <a href="../img/1.png" target="_self"><em>查看图片</em></a>
+</div>
+<div class="center-container">
+    <br><video src="../video/1024.mp4"width="700"></video>
+    <a href="../video/1024.mp4" target="_self">点击视频</a>
+
+    <br><audio src="../audio/3402988807.mp3" controls autoplay muted>音频欣赏</audio>
+    <a href="../audio/3402988807.mp3" target="_self">点击音频</a>
+</div>
+<p>
+    <a href="http://www.usth.edu.cn/" target="_blank"><em>学校官网</em></a>
+</p>
+
+<p>
+    <a href="mailto:">点我发送邮件</a>
+    <br><a href="#top">点我去最上面</a>
+</p>
+<iframe src="../iframe/error.mp4" name="bili错误视频,内嵌框架" width="400" height="300"
+        frameborder="100px solid #000" allow="autoplay muted"></iframe>
+
+<form method="get" action="https://">
+    <p>名字：<input name="name" type="text" size="10"></p>
+    <p>密码：<input name="pwd" type="password"></p>
+    <p>颜色：<input name="colorSelect" type="color"></p>
+    <p>
+        <input name="Button" type="submit" value="提交">
+        <input name="Reset" type="reset" value="重填">
+    </p>
+    <p>下拉框
+        <select name="设备名称">
+            <option value="value01"></option>
+            <option value="value01">兰州</option>
+            <option value="value01">南京</option>
+        </select>
+    </p>
+    <p>
+        <textarea name="文本域" cols="20" rows="4"></textarea>
+        ·反馈建议·
+    </p>
+    <p>
+        <input type="file" name="file">
+        <input type="button" value="上传" name="upload">
+    </p>
+    <p>邮箱：
+        <input type="email" name="email">
+    </p>
+    <p>URL（网页地址）：
+        <input type="url" name="url">
+    </p>
+    <p>数字验证：
+        <input type="number" name="number" max="99" min="1" step="5">
+    </p>
+    <p>滑块：
+        <input type="range" name="range" max="150" min="0" step="10">
+    </p>
+    <p>搜索：
+        <input type="search" name="search">
+    </p>
+    <p>性别：
+        <input type="radio" name="sex" value="男">男
+        <input type="radio" name="sex" value="女">女
+    </p>
+    <p>爱好：
+        <input type="checkbox" name="hobby" value="LOL">LOL
+        <input type="checkbox" name="hobby" value="CF">CF
+        <input type="checkbox" name="hobby" value="CS">CS
+    </p>
+
+
+</form>
+<!--表单应用-->
+<form method="get" action="https://">
+    <label for="input3" >check me</label>
+    <input type="text" id="input" value="点击左边英文到下面名字">
+    <p>名字:<input name="name" type="text"  value="张三"  id="input3">
+
+        <br><input type="text" name="demo01" size="14" pattern="^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$">
+        <input type="submit" value="提交验证" >
+</form>
+</body>
+</html>

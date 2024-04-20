@@ -1,0 +1,24 @@
+#nav{
+    width: 500px;
+}
+
+.title{
+    font-size: 70px;
+}
+
+ul{
+    background: #5a7852;
+}
+
+ul li{
+    list-style: square;
+    height: 25px;
+    text-indent: 1em;
+}
+a{
+    text-decoration: gold;
+    font-size: 15px;
+}
+a:hover{
+    color: orange;
+}

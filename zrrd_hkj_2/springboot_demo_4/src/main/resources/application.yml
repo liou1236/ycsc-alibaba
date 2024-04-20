@@ -1,0 +1,23 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    url: jdbc:mysql:///jtadmin?characterEncoding=utf-8&serverTime=Asia/Shanghai
+    username: root
+    password: root
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+
+mybatis-plus:
+  type-aliases-package: com.zrrd.pojo
+  mapper-locations: classpath:/mappers/*.xml
+  #驼峰映射
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com.zrrd.mapper: debug

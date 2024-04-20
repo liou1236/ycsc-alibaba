@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  var person={
+    name:赵云,
+    birth:2000,
+    age:function (){
+      var now = new Date().getFullYear();
+      return now - this.birth;
+    }
+  }
+  console.log(person.name)
+  console.log(person.birth)
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+#所有的订单(权限)服务使用809x(8091/8092/8093)
+spring:
+  #配置服务名称
+  application:
+    name: shop-order
+
+    #配置nacos服务器所在地址（默认本机IP端口为8848）
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        #配置文件扩展名
+        file-extension: yaml
+        shared-configs: all-service.yaml  #设置所有服务共享的配置文件名
+
+  profiles:
+    #区分环境（test）
+    active: test  #环境标识
+

@@ -1,0 +1,19 @@
+server:
+  port: 8090
+spring:
+  datasource:
+    url: jdbc:mysql:///jtadmin?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+#SpringBoot整合Mybatis配置
+mybatis-plus:
+  #定义别名包
+  type-aliases-package: com.zrrd.pojo
+  mapper-locations: classpath:/mapper/*.xml
+  #开启驼峰映射
+  configuration:
+    map-underscore-to-camel-case: true
+#添加MP日志 打印执行的sql
+logging:
+  level:
+    com.zrrd.mapper: debug

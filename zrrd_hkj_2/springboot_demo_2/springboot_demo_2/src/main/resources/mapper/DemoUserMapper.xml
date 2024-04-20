@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zrrd.mapper.DemoUserMapper">
+    <!--将程序包进行优化，定义别名包就可以了 type-aliases-package:com.zrrd.pojo
+         程序解析的时候会根据别名包名称进行拼接 com.zrrd.pojo.DemoUser-->
+    <select id="findAll" resultType="DemoUser">
+        select * from demo_user
+    </select>
+    <insert id="insertUser" parameterType="demoUser">
+        insert into demo_user(id,name,age,sex) value (null,#{name},#{age},#{sex})
+    </insert>
+    <update id="updateUser">
+        update demo_user set name=#{nowName},sex=#{sex} where name=#{oldName}
+    </update>
+</mapper>

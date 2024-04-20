@@ -1,0 +1,79 @@
+#网关配置3.0版本 在2.0的基础之上删除routes的配置 直接使用服务的id就可以路由到具体的服务了    引入nacos服务发现
+# 统一网关的端口 700x（7000/7001/7002/7003）
+server:
+  port: 7001
+
+spring:
+  zipkin:
+    base-url: http://127.0.0.1:9411/ #zipkin server的请求地址
+    discovery-client-enabled: false #关闭服务发现开关
+  sleuth:
+    sampler:
+      probability: 1.0 #设置请求数据搜集的采样比例(0.0,1.0)
+
+
+
+  application:
+    name: api-gateway
+  #引入nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置nacos注册中心
+    gateway:
+      routes: # 定义路由实例，一个网关可以定义多组路由
+        - id: route_product # 商品服务节点
+          uri: lb://shop-product     # lb = load balance(负载均衡)
+          order: 1
+          predicates:
+            - Path=/service-product/** # 定义服务的访问路径
+          filters:
+            # http://localhost:7000/service-product/product/6 //返回id为6的商品信息详情 ==> http://localhost:8081/product/6
+            - StripPrefix=1 # 去掉访问路径上的前n个路径
+        - id: route_order # 订单服务节点
+          uri: lb://shop-order
+          order: 1
+          predicates:
+            - Path=/service-order/** # 定义服务的访问路径
+          filters:
+            # http://localhost:7001/service-order/order/prod/6 //返回id为6的商品信息详情 ==> http://localhost:8091/order/prod/6
+            - StripPrefix=1 # 去掉访问路径上的前n个路径
+        - id: product_route # 用户服务节点
+          uri: lb://shop-user # lb = load balance(负载均衡)
+          order: 1
+          predicates:
+            - Path=/shop-user/** # 定义服务的访问路径
+          filters:
+            # http://localhost:7000/service-product/product/6 //返回id为6的商品信息详情 ==> http://localhost:8081/product/6
+            - StripPrefix=1 # 去掉访问路径上的前n个路径
+      discovery:
+        locator:
+          enabled: true  #geteway可以发现nacos中的微服务
+      globalcors:        #网关中完成统一的跨域资源共享(为后续前后端分离的网关调用做铺垫)
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost"
+              - "http://localhost:8090"
+            allowedMethods:
+              - "GET"
+              - "POST"
+              - "DELETE"
+              - "PUT"
+              - "OPTIONS"
+            #任何的请求头
+            allowedHeaders: "*"
+            allowCredentials: true
+            maxAge: 360000
+
+#请求时 不需要身份认证的(登录请求)
+auth-filter:
+  excludes:
+    - /shop-user/admin/login
+    - /shop-user/user/login
+    - /shop-product/aaa/m1
+    - /service-product/aaa/m1
+
+
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    配置AccountService-->
+    <bean id="accountService" class="com.zrrd.service.impl.AccountServiceImpl">
+<!--        依赖注入-->
+        <property name="accountDao" ref="accountDao"></property>
+    </bean>
+<!-- 配置AccountDao-->
+    <bean id="accountDao" class="com.zrrd.dao.impl.AccountDaoImpl">
+<!--            依赖注入QueryRunner-->
+        <property name="queryRunner" ref="queryRunner"></property>
+    </bean>
+
+    <bean id="queryRunner" class="org.apache.commons.dbutils.QueryRunner">
+<!--            依赖注入DataSource ，使用构造方法的方式-->
+        <constructor-arg name="ds" ref="druidDataSource"></constructor-arg>
+    </bean>
+
+<!--    配置数据源-->
+    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/mytest?useSSL=false&amp;characterEncoding=utf8"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="root"></property>
+
+    </bean>
+
+
+</beans>

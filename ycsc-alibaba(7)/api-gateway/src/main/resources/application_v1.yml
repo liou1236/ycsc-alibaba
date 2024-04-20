@@ -1,0 +1,26 @@
+# 统一网关的端口 700x（7000/7001/7002/7003）
+server:
+  port: 7001
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes: # 定义路由实例，一个网关可以定义多组路由
+        - id: product_route # 商品服务节点
+          uri: http://localhost:8081
+          order: 1
+          predicates:
+            - Path=/service-product/** # 定义服务的访问路径
+          filters:
+            # http://localhost:7000/service-product/product/6 //返回id为6的商品信息详情 ==> http://localhost:8081/product/6
+            - StripPrefix=1 # 去掉访问路径上的前n个路径
+        - id: order_route # 订单服务节点
+          uri: http://localhost:8091
+          order: 1
+          predicates:
+            - Path=/service-order/** # 定义服务的访问路径
+          filters:
+            # http://localhost:7001/service-order/order/prod/6 //返回id为6的商品信息详情 ==> http://localhost:8091/order/prod/6
+            - StripPrefix=1 # 去掉访问路径上的前n个路径

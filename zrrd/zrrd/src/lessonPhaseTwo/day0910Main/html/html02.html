@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子模型</title>
+  <link href="../css/css02.css" rel="stylesheet">
+    <style>
+        #box {
+            width: 300px;
+            border: 3px solid red;
+        }
+        body{
+            margin: 15px 20px;
+        }
+        form{
+            background: green;
+        }
+        div:nth-of-type(1) input{
+            border:5px solid gold;
+        }
+        div:nth-of-type(1) h3{
+            border:5px solid indigo;
+        padding-bottom: 5px;
+            height: 20px;
+            width: 100px;
+        }
+    </style>
+
+</head>
+<body>
+<div id="box">
+    <h3>会员登录</h3>
+    <form action="#">
+        <div id="id1">
+            <span>用户名:</span>
+            <input type="text">
+            <input type="text">
+        </div>
+        <div id="id2">
+            <span>密码：</span>
+            <input type="password">
+        </div>
+        <div id="id3">
+            <span>邮箱：</span>
+            <input type="text">
+        </div>
+    </form>
+</div>
+</body>
+</html>

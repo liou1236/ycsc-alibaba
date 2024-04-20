@@ -1,0 +1,18 @@
+//[true,false,{"id":100,"name":"兰陵王","hobbies": ["敲代码","玩游戏","找对象",{"username": "admin","password": "root"}]}]
+[
+  true,
+  false,
+  {
+    "id":100,
+    "name":"兰陵王",
+    "hobbies":[
+      "敲代码",
+      "玩游戏",
+      "找对象",
+      {
+        "username":"admin",
+        "password":"root"
+      }
+    ]
+  }
+]

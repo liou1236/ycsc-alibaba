@@ -1,0 +1,6 @@
+村注解开发
+Configuration标识当前类是spring的一个配置类
+ComponentScan替代xml中<context: component-scan>
+import
+
+

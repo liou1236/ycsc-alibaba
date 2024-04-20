@@ -1,0 +1,42 @@
+##所有的用户(权限)服务使用807x(8071/8072/8073)
+#server:
+#  port: 8071
+#
+#spring:
+#  zipkin:
+#    base-url: http://127.0.0.1:9411/ #zipkin server的请求地址
+#    discovery-client-enabled: false #关闭服务发现开关
+#  sleuth:
+#    sampler:
+#      probability: 1.0 #设置请求数据搜集的采样比例(0.0,1.0)
+#
+#
+#
+#  #配置服务名称
+#  application:
+#    name: shop-user
+#
+#  # 数据源
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/zrrd_mall_tmp?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+#    username: root
+#    password: root
+#
+#  #配置nacos服务器所在地址(默认为本机ip端口为8848)
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#    sentinel:
+#      transport:
+#        port: 10000  #跟控制台交流的端口 随意指定一个未使用的端口即可
+#        dashboard: localhost:8080 #指定控制台服务的地址
+#
+## mybatis-plus配置
+#mybatis-plus:
+#  configuration:
+#    map-underscore-to-camel-case: true
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  type-aliases-package: com.zrrd.shop.pojo
+#  mapper-locations: classpath*:/mapper/**/*.xml

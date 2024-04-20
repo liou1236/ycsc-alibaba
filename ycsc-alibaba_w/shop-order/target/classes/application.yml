@@ -1,0 +1,57 @@
+##所有的订单服务使用809x(8091/8092/8093)
+#server:
+#  port: 8091
+#
+#spring:
+#  zipkin:
+#    base-url: http://127.0.0.1:9411/ #zipkin server 的请求地址
+#    discovery-client-enable: false #关闭服务开关
+#  sleuth:
+#    sampler:
+#      probability: 1.0  #设置请求数据收集的采样比例(0.0,1.0)
+#
+#  #配置服务名称
+#  application:
+#    name: shop-order
+#
+#  # 数据源
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/zrrd_mall_tmp?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+#    username: root
+#    password: root
+#
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#    sentinel:
+#      transport:
+#        port: 10000  #跟控制台交流的端口
+#        dashboard: localhost:8180  #指定控制台服务的地址
+## mybatis-plus配置
+#mybatis-plus:
+#  configuration:
+#    map-underscore-to-camel-case: true
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  type-aliases-package: com.zrrd.shop.pojo
+#  mapper-locations: classpath*:/mapper/**/*.xml
+#
+#ribbom:
+#  ConnectTimeout:2000
+#  ReadTimeout:5000
+#
+#shop-product:        #nacos总的服务id
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#feign:
+#  sentinel:
+#    enabled: true   #默认值为 false
+#
+#
+#rocketmq:
+#  name-server: 127.0.0.1:9876
+#  producer:
+#    group: zryc-product-g1
+#  consumer:
+#    group: zryc-consumer-g1

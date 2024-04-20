@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!--    <bean id="accountService"-->
+<!--          class="com.zrrd.service.impl.AccountServiceImpl">-->
+<!--    </bean>-->
+    <!-- 配置dao-->
+<!--    <bean id="accountService"-->
+<!--          class="com.zrrd.service.impl.AccountServiceImpl" scope="prototype"></bean>-->
+    <bean id="accountDao" class="com.zrrd.dao.impl.AccountDaoImpl"
+          scope="singleton" init-method="init" destroy-method="destroy"></bean>
+
+    <bean id="accountService"
+          class="com.zrrd.factory.AccountStaticFactory" factory-method="getBean"></bean>
+
+    <bean id="instanceFactory" class="com.zrrd.factory.InstanceFactory"></bean>
+    <bean id="accountService" factory-bean="instanceFactory" factory-method="getBean"></bean>
+<!--    <bean id="birthdayId" class="java.util.Date"></bean>-->
+<!--    <bean id -->
+
+
+</beans>

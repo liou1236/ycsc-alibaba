@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.zrrd"></context:component-scan>
+
+    <bean id="log" class="com.zrrd.utils.LogUtils"></bean>
+
+    <aop:config>
+        <aop:aspect id="point1" ref="log" >
+            <aop:pointcut id="pc" expression="execution(* com.zrrd.service.impl.*.*(..))"/>
+            <aop:before method="beforeMethod" pointcut-ref="pc"></aop:before>
+            <aop:after method="afterMethod" pointcut-ref="pc"></aop:after>
+            <aop:after-throwing method="afterThrowing" pointcut-ref="pc"></aop:after-throwing>
+            <aop:after-returning method="afterReturning" pointcut-ref="pc"></aop:after-returning>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

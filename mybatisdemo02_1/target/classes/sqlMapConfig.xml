@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--        用于配置常用属性，可以理解为定义的变量  不常用-->
+<!--    <properties>-->
+<!--        <property name="jdbc.driver" value="com.mysql.jdbc.Driver"/>-->
+<!--        <property name="jdbc.url" value="jdbc:mysql://localhost:3305/mytest?useSSL=false&amp;characterEncoding=utf8"/>-->
+<!--        <property name="jdbc.username" value="root"/>-->
+<!--        <property name="jdbc.password" value="root"/>-->
+<!--    </properties>-->
+
+    <properties resource="jdbc.properties"></properties>
+<!--配置别名-->
+    <typeAliases>
+<!--        为了一个pojo设置别名-->
+<!--        <typeAlias type="com.zrrd.pojo.Student" alias="Student"></typeAlias>-->
+<!--为了包下所有的pojo设置别名-->
+        <package name="com.zrrd.pojo"/>
+    </typeAliases>
+
+<!--    配置mybatis的环境-->
+    <environments default="mysql">
+        <environment id="mysql">
+<!--            事务管理策略-->
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+<!--                配置数据源-->
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+<!--    配置映射文件的信息-->
+    <mappers>
+<!--        <mapper resource="com/zrrd/dao/UserMapper.xml"/>-->
+<!--        使用接口类加载单个映射文件-->
+<!--        <mapper class="com.zrrd.dao.StudentDao"></mapper>-->
+<!--        批量加载映射文件   推荐使用-->
+        <package name="com.zrrd.dao"/>
+    </mappers>
+</configuration>

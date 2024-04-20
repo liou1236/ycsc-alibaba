@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表数据</title>
+    <script src="/jquery-3.7.0.min.js"></script>
+    <script>
+      //1、jq中有一种编程思想 函数式编程 $表示jq
+      $(function () {//整个·1页面加载完之后再去执行
+        // alert("jq调试")
+        /*
+        常见的Ajax用法
+        1、$.get(url地址，提交数据，回调函数，返回值类型)如果没有的内容可以空出来直接逗号
+        2、$.post(url地址，提交数据，回调函数，返回值类型)
+
+        向后端服务发送请求 /findAjaxUser 之后将返回值结果 进行页面解析
+         */
+        $.get("/findAjaxUser",function (resul) {
+          /*
+          result是服务器返回的结果[{},{},{}....]
+          将返回值结果进行遍历
+           */
+          // for (index in result){//var i = 0;i < result.length;i++
+          //   var user = result[index];
+          //   console.log(user);
+          // }
+            for (user of resul){
+              //获取对象的属性值
+              var id = user.id;
+              var name = user.name;
+              var age = user.age;
+              var sex = user.sex;
+              var tr = "<tr align='center'><td>"+ id +"</td><td>"+ name +"</td><td>"+ age +"</td><td>"+ sex +"</td></tr>"
+              //选中table标签中id=userTable元素
+              //追加数据append(追加的内容)
+              $("#userTable").append(tr)
+              // console.log(user)
+            }
+        })
+
+          // $.get("findAjaxUser",'id=1&name=jery',function (result){
+          //     console.log()
+          // })
+
+          // console.log("对象结构写法")
+          // $.get("/findAjaxUser",{id:1,name:'tomcat'},function(result){
+          //   console.log("get请求成功")
+          // })
+          // $.post("/findAjaxUser",{id:1,name:'tomcat'},function(result){
+          //     console.log("post请求成功")
+          // })
+
+          //要求返回值必须都是JSON字符串
+          // $.getJSON('/findAjaxUser',{id:1,name:'tomcat'},function (result) {
+          //     console.log("getJOSN的请求数据")
+          // })
+
+          //最基本的，老祖
+          $.ajax({
+              type: "put",                  //请求类型
+              url: "/findAjaxUser",         //请求路径
+              date: {id:1,name:'tomcat'},   //请求参数
+              success: function (result) {
+                  console.log("ajax请求成功")   //成功之后回调函数
+              },
+              error: function (result) {        //失败之后的回调函数
+                  console.log("ajax请求失败")
+              }
+          })
+
+      })
+    </script>
+</head>
+<body>
+    <table id="userTable" border="5px" align="center" width="800px">
+      <tr align="center">
+        <td colspan="4"><h3>用户列表</h3></td>
+      </tr>
+      <tr align="center">
+        <td>Id</td>
+        <td>名称</td>
+        <td>年龄</td>
+        <td>性别</td>
+      </tr>
+
+<!--  <tr align="center" th:each="user : ${userList}">-->
+<!--    <td th:text="${user.id}"></td>-->
+<!--    <td th:text="${user.name}"></td>-->
+<!--    <td th:text="${user.age}"></td>-->
+<!--    <td th:text="${user.sex}"></td>-->
+<!--  </tr>-->
+</table>
+</body>
+</html>

@@ -1,0 +1,12 @@
+create table category(
+    cid varchar(10) primary key,
+    cname varchar(20)
+    );
+insert into product (pid,pname,price) values (4,'蜜雪冰城'，200);
+
+alter table product drop foreign key product_fk;
+
+alter table orderitem drop foreign key orderitem_order_fk;
+
+select
+

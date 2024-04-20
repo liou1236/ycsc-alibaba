@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<beans>
+
+    <bean id="AccountDao" class="com.zrrd.dao.impl.AccountDaoImpl"></bean>
+    <bean id="AccountService" class="com.zrrd.service.impl.AccountServiceImpl"></bean>
+</beans>

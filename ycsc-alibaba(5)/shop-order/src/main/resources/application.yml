@@ -1,0 +1,56 @@
+##所有的订单服务使用809x(8091/8092/8093)
+#server:
+#  port: 8091
+#
+#spring:
+#  zipkin:
+#    base-url: http://127.0.0.1:9411/ #zipkin server的请求地址
+#    discovery-client-enabled: false #关闭服务发现开关
+#  sleuth:
+#    sampler:
+#      probability: 1.0 #设置请求数据搜集的采样比例(0.0,1.0)
+#
+#
+#  #配置服务名称
+#  application:
+#    name: shop-order
+#
+#  # 数据源
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/zrrd_mall_tmp?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+#    username: root
+#    password: root
+#  #配置nacos服务器所在地址(默认为本机ip端口为8848)
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#    sentinel:
+#      transport:
+#        port: 10000  #跟控制台交流的端口 随意指定一个未使用的端口即可
+#        dashboard: localhost:8080 #指定控制台服务的地址
+## mybatis-plus配置
+#mybatis-plus:
+#  configuration:
+#    map-underscore-to-camel-case: true
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  type-aliases-package: com.zrrd.shop.pojo
+#  mapper-locations: classpath*:/mapper/**/*.xml
+#
+##设置使用哪一种负载均衡策略
+#shop-product: #nacos中的服务id
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #设置负载均衡
+##开启Feign客户端的Sentinel异常处理功能
+#feign:
+#  sentinel:
+#    enabled: true #默认值为FALSE
+##消息队列 RocketMQ
+#
+#rocketmq:
+#  name-server: 127.0.0.1:9876
+#  producer:
+#    group: zryc-product-g1
+#  consumer:
+#    group: zryc-consumer-g1
